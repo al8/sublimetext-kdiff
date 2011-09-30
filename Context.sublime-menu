@@ -1,0 +1,5 @@
+[
+    { "caption": "-" },
+    { "caption": "Compare-Kdiff", "command": "kdiff_run"},
+    { "caption": "-" }
+]

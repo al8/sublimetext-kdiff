@@ -1,0 +1,10 @@
+[
+    {
+        "caption": "Kdiff: Compare",
+        "command": "kdiff_run"
+    },
+    {
+        "caption": "Kdiff: Update Path",
+        "command": "kdiff_change_executable_path"
+    }
+]
