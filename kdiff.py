@@ -29,7 +29,7 @@ g_fname_current = None
 
 g_default_path_windows = "\"C:\\Program Files\\KDiff3\\kdiff3.exe\""
 g_default_path_windowsx64 = "C:\\Program Files (x86)\\KDiff3\\kdiff3.exe"
-g_default_path_osx = "/Application/kdiff3.app/somethingsomething"
+g_default_path_osx = "/Applications/kdiff3.app/Contents/MacOS/kdiff3"
 g_default_locations = [g_default_path_windows, g_default_path_windowsx64, g_default_path_osx]
 
 def is_osx():
