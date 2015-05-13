@@ -1,27 +1,32 @@
-import sublime, sublime_plugin  
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+
+import sublime, sublime_plugin
 
 import subprocess
 import os.path
 import os
 
-# Extends TextCommand so that run() receives a View to modify.  
-# class DuplicateCommand(sublime_plugin.TextCommand):  
-#     def run(self, view, args):  
+# Extends TextCommand so that run() receives a View to modify.
+# class DuplicateCommand(sublime_plugin.TextCommand):
+#     def run(self, view, args):
 #         print "duplicate"
-#         # Walk through each region in the selection  
-#         for region in view.sel():  
-#             # Only interested in empty regions, otherwise they may span multiple  
-#             # lines, which doesn't make sense for this command.  
-#             if region.empty():  
-#                 # Expand the region to the full line it resides on, excluding the newline  
-#                 line = view.line(region)  
-#                 # Extract the string for the line, and add a newline  
-#                 lineContents = view.substr(line) + '\n'  
-#                 # Add the text at the beginning of the line  
+#         # Walk through each region in the selection
+#         for region in view.sel():
+#             # Only interested in empty regions, otherwise they may span multiple
+#             # lines, which doesn't make sense for this command.
+#             if region.empty():
+#                 # Expand the region to the full line it resides on, excluding the newline
+#                 line = view.line(region)
+#                 # Extract the string for the line, and add a newline
+#                 lineContents = view.substr(line) + '\n'
+#                 # Add the text at the beginning of the line
 #                 view.insert(line.begin(), lineContents)
 
 def debug_print(str):
-    print "KDIFF", str
+    print("KDIFF", str)
 
 
 g_fname_last = None
@@ -48,7 +53,7 @@ class kdiff_monitor(sublime_plugin.EventListener):
     def on_activated(self, view):
         global g_fname_last, g_fname_current
         # debug_print("ACTIVATED: %s" % (view.file_name()))
-        
+
         if not view.file_name() is None and (view.file_name() != g_fname_current):
             g_fname_last = g_fname_current
             g_fname_current = view.file_name()
@@ -95,11 +100,11 @@ class kdiffChangeExecutablePathCommand(sublime_plugin.WindowCommand):
 
 class kdiffRunCommand(sublime_plugin.TextCommand):
 
-    def run(self, args):  
+    def run(self, args):
         # view = self.view
         global g_fname_last, g_fname_current
         is_osx()
-        
+
         if g_fname_last is None:
             debug_print("current: %s   last:%s" % ( g_fname_last, g_fname_current   ))
             debug_print("error: cannot compare, last file is none")
@@ -137,7 +142,7 @@ class kdiffRunCommand(sublime_plugin.TextCommand):
                     # os.spawnlp(os.P_NOWAIT, os_command, "kdiff", os_args)
 
                     command_line = "\"%s\" %s" % (os_command, os_args)
-                    
+
                     # print "SYSTEM:", os.system(command_line)
                     subprocess.Popen(command_line)
                     # debug_print(command_line)
