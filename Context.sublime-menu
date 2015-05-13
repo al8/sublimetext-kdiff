@@ -1,3 +1,3 @@
 [
-    { "caption": "Kdiff", "command": "kdiff_run"}
+    { "caption": "Kdiff with Previous", "command": "kdiff_run"}
 ]

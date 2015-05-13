@@ -1,6 +1,6 @@
 [
     {
-        "caption": "Kdiff: Compare",
+        "caption": "Kdiff: Compare With Previous",
         "command": "kdiff_run"
     },
     {
